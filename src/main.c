@@ -15,10 +15,11 @@ int main(){
 
         // Replacing trailing \n with \0
         size_t len = strlen(input);
-        if (input[len - 1] == '\n') input[len - 1] = '\0';
-
+        if (len > 0 && input[len - 1] == '\n') input[len - 1] = '\0';
+        
         // Edge case: Empty input
-        // TODO
+        // If the first character is the null character, the input is empty, so the loop is restarted.
+        if (input[0] == '\0') continue;
 
         // Exit condition
         if (strcmp(input, "exit") == 0) break;
