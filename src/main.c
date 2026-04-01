@@ -2,6 +2,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "../include/parser.h"
+
 int main(){
     char cwd[1024];
     getcwd(cwd, sizeof(cwd));
@@ -23,6 +25,17 @@ int main(){
 
         // Exit condition
         if (strcmp(input, "exit") == 0) break;
+
+        // Tokenization
+        char **tokens[MAX_TOKENS];
+        tokenizer(tokens, input);
+
+        // Test loop to see the contents of tokens after tokenization
+        int i = 0;
+        while (tokens[i] != NULL){
+            printf("%s ", tokens[i]);
+            ++i;
+        }
     }
 
     return 0;
