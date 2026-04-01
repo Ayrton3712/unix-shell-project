@@ -33,9 +33,10 @@ int main(){
         // Test loop to see the contents of tokens after tokenization
         int i = 0;
         while (tokens[i] != NULL){
-            printf("%s ", tokens[i]);
+            printf("Token %d: %s\n", i + 1, tokens[i]);
             ++i;
         }
+
     }
 
     return 0;
