@@ -27,7 +27,7 @@ int main(){
         if (strcmp(input, "exit") == 0) break;
 
         // Tokenization
-        char **tokens[MAX_TOKENS];
+        char *tokens[MAX_TOKENS];
         tokenizer(tokens, input);
 
         // Test loop to see the contents of tokens after tokenization
