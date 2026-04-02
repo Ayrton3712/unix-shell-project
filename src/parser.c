@@ -9,6 +9,12 @@ void tokenizer(char **tokens, char *input){
     // Storing non-NULL tokens into the array
     int i = 0;
     while (tok != NULL){
+        // Boundary check
+        if (i == MAX_TOKENS - 1){
+            tokens[i] = tok;
+            break;
+        }
+        
         tokens[i] = tok;
         tok = strtok(NULL, " \t\n");
 
