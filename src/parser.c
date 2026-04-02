@@ -19,5 +19,5 @@ void tokenizer(char **tokens, char *input){
         else break;
     }
 
-    tokens[i] = NULL;   // Making the last entry of tokens NULL
+    tokens[i < MAX_TOKENS ? i : MAX_TOKENS - 1] = NULL;   // Making the last entry of tokens NULL
 }
