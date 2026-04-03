@@ -9,15 +9,14 @@ void tokenizer(char **tokens, char *input){
     // Storing non-NULL tokens into the array
     int i = 0;
     while (tok != NULL){
-        // Boundary check. Inserting token only if i is within the bounds of "tokens"
-        if (i < MAX_TOKENS){
+        // Storing token only if i is within bounds of tokens, excluding the last entry
+        if (i < MAX_TOKENS - 1){
             tokens[i] = tok;
-            tok = strtok(NULL, " \t\n");
-
             ++i;
         }
-        else break;
+        
+        tok = strtok(NULL, " \t\n");    // Processing next token
     }
 
-    tokens[i < MAX_TOKENS ? i : MAX_TOKENS - 1] = NULL;   // Making the last entry of tokens NULL
+    tokens[i] = NULL;   // Making the last entry of tokens NULL
 }
