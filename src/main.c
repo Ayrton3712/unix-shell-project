@@ -4,12 +4,6 @@
 
 #include "../include/parser.h"
 
-struct Command{
-    char *name;
-    char *args[MAX_TOKENS];
-    int   argc;
-};
-
 int main(){
     char cwd[1024];
     getcwd(cwd, sizeof(cwd));
