@@ -20,3 +20,25 @@ void tokenizer(char **tokens, char *input){
 
     tokens[i] = NULL;   // Making the last entry of tokens NULL
 }
+
+// Function to parse tokens
+Command parse(char **tokens){
+    Command cmd = {0};  // Command struct with fields initialized to zero/NULL
+    
+    // Checking if tokens array is empty first
+    if (tokens[0] == NULL) return cmd;
+        
+    cmd.name = tokens[0];
+
+    // Copying the tokens into args
+    int i = 0;
+    while (tokens[i] != NULL){
+        cmd.args[i] = tokens[i];
+        ++i;
+    }
+    cmd.args[i] = NULL; // Making the last entry of args NULL
+
+    cmd.argc = i; // Storing token count, including name
+
+    return cmd;
+}

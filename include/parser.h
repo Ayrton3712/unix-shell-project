@@ -3,12 +3,13 @@
 
 #define MAX_TOKENS 64
 
-struct Command{
+typedef struct Command{
     char *name;             // Pointer to args[0], the command name
     char *args[MAX_TOKENS]; // Stores all tokens
     int   argc;             // Stores token count
-};
+} Command;
 
 void tokenizer(char **, char *);
+Command parse(char **);
 
 #endif

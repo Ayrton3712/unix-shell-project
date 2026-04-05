@@ -30,6 +30,17 @@ int main(){
         char *tokens[MAX_TOKENS];
         tokenizer(tokens, input);
 
+        // Parsing
+        Command cmd = parse(tokens);
+
+        printf("Token count: %d\nCommand name: %s\n", cmd.argc, cmd.name);
+
+        // Test loop to print cmd fields
+        int i = 0;
+        while (cmd.args[i] != NULL){
+            printf("Argument %d: %s\n", i + 1, cmd.args[i]);
+            ++i;
+        }
     }
 
     return 0;
