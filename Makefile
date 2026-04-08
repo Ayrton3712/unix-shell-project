@@ -5,8 +5,8 @@ BUILD_DIR = build
 
 TARGET = $(BUILD_DIR)/mysh
 
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/parser.c
-OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/parser.o
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/parser.c $(SRC_DIR)/executor.c
+OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/parser.o $(BUILD_DIR)/executor.o
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
