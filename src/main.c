@@ -3,6 +3,7 @@
 #include <unistd.h>
 
 #include "../include/parser.h"
+#include "../include/executor.h"
 
 int main(){
     char cwd[1024];
@@ -35,12 +36,12 @@ int main(){
 
         printf("Token count: %d\nCommand name: %s\n", cmd.argc, cmd.name);
 
-        // Test loop to print cmd fields
-        int i = 0;
-        while (cmd.args[i] != NULL){
-            printf("Argument %d: %s\n", i + 1, cmd.args[i]);
-            ++i;
-        }
+        // // Test loop to print cmd fields
+        // int i = 0;
+        // while (cmd.args[i] != NULL){
+        //     printf("Argument %d: %s\n", i + 1, cmd.args[i]);
+        //     ++i;
+        // }
     }
 
     return 0;
