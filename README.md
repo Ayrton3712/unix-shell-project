@@ -15,3 +15,7 @@ User inputs are split into tokens and parsed into a Command struct.
 <br>
 <img width="376" height="100" alt="image" src="https://github.com/user-attachments/assets/8f5350f8-56e7-4d7c-9448-754c2840af95" />
 
+## Process execution:
+An executor function creates a child process with fork(). The child process becomes the file whose name is specified in the name field of the Command struct via execvp(), while the parent shell waits for the child process to finish via waitpid(). Example of execution with ls -l:
+
+<img width="441" height="114" alt="image" src="https://github.com/user-attachments/assets/b7013c74-f0fb-42d9-b074-b1d8475a4ca8" />
