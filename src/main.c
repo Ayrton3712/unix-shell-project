@@ -58,6 +58,7 @@ int main(){
             printf("cd dir  \t - Change directory to dir\n");
             printf("pwd     \t - Print working directory\n");
             printf("exit    \t - Exit the shell\n");
+            printf("help    \t - Print a list of the commands supported\n");
             printf("Note: Other commands are passed to the OS via execvp (ls, cat, etc.)\n");
         }
         // exit
