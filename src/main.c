@@ -24,9 +24,6 @@ int main(){
         // If the first character is the null character, the input is empty, so the loop is restarted.
         if (input[0] == '\0') continue;
 
-        // Exit condition
-        if (strcmp(input, "exit") == 0) break;
-
         // Tokenization
         char *tokens[MAX_TOKENS];
         tokenizer(tokens, input);
@@ -34,8 +31,12 @@ int main(){
         // Parsing
         Command cmd = parse(tokens);
 
-        // Executing file via executor
-        executor(cmd);
+        // Handling built-in command
+        if (strcmp(cmd.name, "cd")){
+            // todo
+        }
+        else if (strcmp(input, "exit") == 0) break;
+        else executor(cmd);
     }
 
     return 0;
