@@ -48,6 +48,10 @@ int main(){
                 }
             }
         }
+        // pwd (print working directory)
+        if (strcmp(cmd.name, "pwd") == 0){
+            printf("%s", cwd);
+        }
         // exit
         else if (strcmp(cmd.name, "exit") == 0) break;
         else executor(cmd);
