@@ -52,6 +52,13 @@ int main(){
         if (strcmp(cmd.name, "pwd") == 0){
             printf("%s", cwd);
         }
+        // help: A description of the built-in commands supported
+        if (strcmp(cmd.name, "help") == 0){
+            printf("cd dir  \t - Change directory to dir\n
+                    pwd     \t - Print working directory\n
+                    exit    \t - Exit the shell
+                    Note: Other commands are passed to the OS via execvp (ls, cat, etc.)\n");
+        }
         // exit
         else if (strcmp(cmd.name, "exit") == 0) break;
         else executor(cmd);
