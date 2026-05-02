@@ -41,6 +41,7 @@ int main(){
             else {
                 if (chdir(cmd.args[1]) != -1){
                     getcwd(cwd, sizeof(cwd));   // Updating cwd with getcwd
+
                 }
                 else {
                     printf("Failed to change directory\n");
@@ -49,11 +50,11 @@ int main(){
             }
         }
         // pwd (print working directory)
-        if (strcmp(cmd.name, "pwd") == 0){
+        else if (strcmp(cmd.name, "pwd") == 0){
             printf("%s", cwd);
         }
         // help: A description of the built-in commands supported
-        if (strcmp(cmd.name, "help") == 0){
+        else if (strcmp(cmd.name, "help") == 0){
             printf("cd dir  \t - Change directory to dir\n");
             printf("pwd     \t - Print working directory\n");
             printf("exit    \t - Exit the shell\n");
