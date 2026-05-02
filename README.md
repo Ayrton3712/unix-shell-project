@@ -23,4 +23,5 @@ An executor function creates a child process with fork(). The child process beco
 ## Built-in commands:
 Basic built-in commands implemented directly in the shell before calling the executor function to create the child process: cd, pwd (print working directory), help, exit. Usage example:
 
-<img width="550" height="178" alt="image" src="https://github.com/user-attachments/assets/29cb85d6-50ce-4a98-9258-026db413ea40" />
+<img width="550" height="195" alt="image" src="https://github.com/user-attachments/assets/489bcaca-6433-47b2-b468-75908015ae84" />
+
