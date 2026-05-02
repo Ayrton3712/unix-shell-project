@@ -31,11 +31,25 @@ int main(){
         // Parsing
         Command cmd = parse(tokens);
 
-        // Handling built-in command
-        if (strcmp(cmd.name, "cd")){
-            // todo
+        // Handling built-in commands
+        // cd
+        if (strcmp(cmd.name, "cd") == 0){
+            if (cmd.argc == 1){
+                printf("Directory not provided\n");
+                continue;
+            }
+            else {
+                if (chdir(cmd.args[1]) != -1){
+                    getcwd(cwd, sizeof(cwd));   // Updating cwd with getcwd
+                }
+                else {
+                    printf("Failed to change directory\n");
+                    continue;
+                }
+            }
         }
-        else if (strcmp(input, "exit") == 0) break;
+        // exit
+        else if (strcmp(cmd.name, "exit") == 0) break;
         else executor(cmd);
     }
 
