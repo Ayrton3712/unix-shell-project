@@ -19,3 +19,8 @@ User inputs are split into tokens and parsed into a Command struct.
 An executor function creates a child process with fork(). The child process becomes the file whose name is specified in the name field of the Command struct via execvp(), while the parent shell waits for the child process to finish via waitpid(). Example of execution with ls -l:
 
 <img width="441" height="114" alt="image" src="https://github.com/user-attachments/assets/b7013c74-f0fb-42d9-b074-b1d8475a4ca8" />
+
+## Built-in commands:
+Basic built-in commands implemented directly in the shell before calling the executor function to create the child process: cd, pwd (print working directory), help, exit. Usage example:
+
+<img width="550" height="178" alt="image" src="https://github.com/user-attachments/assets/29cb85d6-50ce-4a98-9258-026db413ea40" />
