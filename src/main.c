@@ -51,7 +51,7 @@ int main(){
         }
         // pwd (print working directory)
         else if (strcmp(cmd.name, "pwd") == 0){
-            printf("%s", cwd);
+            printf("%s\n", cwd);
         }
         // help: A description of the built-in commands supported
         else if (strcmp(cmd.name, "help") == 0){
