@@ -26,7 +26,7 @@ int main(){
 
         // Tokenization
         char *tokens[MAX_TOKENS];
-        tokenizer(tokens, input);
+        if (tokenizer(tokens, input) == -1) continue;
 
         // Parsing
         Command cmd = parse(tokens);
