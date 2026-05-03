@@ -15,7 +15,7 @@ void executor(Command cmd){
         exit(EXIT_FAILURE);
     }
     else if (pid == -1){
-        printf("Child process could not be created.\n");
+        perror("fork");
     }
     else{
         waitpid(pid, NULL, 0);
