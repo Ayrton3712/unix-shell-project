@@ -9,7 +9,7 @@ typedef struct Command{
     int   argc;             // Stores token count
 } Command;
 
-void tokenizer(char **, char *);
+int tokenizer(char **, char *);
 Command parse(char **);
 
 #endif

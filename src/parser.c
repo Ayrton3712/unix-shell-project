@@ -4,7 +4,7 @@
 #include "../include/parser.h"
 
 // Function to tokenize an input string using strtok and store each token in the array tokens
-void tokenizer(char **tokens, char *input){
+int tokenizer(char **tokens, char *input){
     char *tok = strtok(input, " \t\n"); // First token
     
     // Storing non-NULL tokens into the array
@@ -12,6 +12,7 @@ void tokenizer(char **tokens, char *input){
     while (tok != NULL){
         if (i == MAX_TOKENS - 1){
             printf("Too many arguments (max is %d). Try again with fewer arguments\n", MAX_TOKENS);
+            return -1;
         }
 
         // Storing token only if i is within bounds of tokens, excluding the last entry
@@ -24,6 +25,8 @@ void tokenizer(char **tokens, char *input){
     }
 
     tokens[i] = NULL;   // Making the last entry of tokens NULL
+
+    return 0;
 }
 
 // Function to parse tokens
