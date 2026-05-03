@@ -10,18 +10,16 @@ int tokenizer(char **tokens, char *input){
     // Storing non-NULL tokens into the array
     int i = 0;
     while (tok != NULL){
+        // Checking if token limit has been reached
         if (i == MAX_TOKENS - 1){
-            printf("Too many arguments (max is %d). Try again with fewer arguments\n", MAX_TOKENS);
+            printf("Too many arguments (max is %d). Try again with fewer arguments\n", MAX_TOKENS - 1);
             return -1;
         }
-
-        // Storing token only if i is within bounds of tokens, excluding the last entry
-        if (i < MAX_TOKENS - 1){
-            tokens[i] = tok;
-            ++i;
-        }
         
+        tokens[i] = tok;        
         tok = strtok(NULL, " \t\n");    // Processing next token
+
+        ++i;
     }
 
     tokens[i] = NULL;   // Making the last entry of tokens NULL
