@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h> 
 
 #include "../include/parser.h"
@@ -9,6 +10,10 @@ void tokenizer(char **tokens, char *input){
     // Storing non-NULL tokens into the array
     int i = 0;
     while (tok != NULL){
+        if (i == MAX_TOKENS - 1){
+            printf("Too many arguments (max is %d). Try again with fewer arguments\n", MAX_TOKENS);
+        }
+
         // Storing token only if i is within bounds of tokens, excluding the last entry
         if (i < MAX_TOKENS - 1){
             tokens[i] = tok;
