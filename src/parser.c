@@ -15,10 +15,9 @@ int tokenizer(char **tokens, char *input){
             printf("Too many arguments (max is %d). Try again with fewer arguments\n", MAX_TOKENS - 1);
             return -1;
         }
-        
         tokens[i] = tok;        
         tok = strtok(NULL, " \t\n");    // Processing next token
-
+        
         ++i;
     }
 
@@ -28,7 +27,11 @@ int tokenizer(char **tokens, char *input){
 }
 
 // Function to parse tokens
-Command parse(char **tokens){
+Command parse(char **tokens, int *in, int *out){
+    // Set flags to 0
+    *in = 0;
+    *out = 0;
+    
     Command cmd = {0};  // Command struct with fields initialized to zero/NULL
     
     // Checking if tokens array is empty first
@@ -39,8 +42,17 @@ Command parse(char **tokens){
     // Copying the tokens into args
     int i = 0;
     while (tokens[i] != NULL){
-        cmd.args[i] = tokens[i];
-        ++i;
+        if (strcmp(tokens[i], ">") != 0){
+            cmd.args[i] = tokens[i];
+            ++i;
+        }
+        else if (strcmp(tokens[i], ">") == 0){
+            *out = 1;
+            ++i;
+            cmd.output_file = tokens[i];
+            --i;
+            break;
+        }
     }
     cmd.args[i] = NULL; // Making the last entry of args NULL
 

@@ -29,7 +29,8 @@ int main(){
         if (tokenizer(tokens, input) == -1) continue;
 
         // Parsing
-        Command cmd = parse(tokens);
+        int in, out;
+        Command cmd = parse(tokens, &in, &out);
 
         // Handling built-in commands
         // cd

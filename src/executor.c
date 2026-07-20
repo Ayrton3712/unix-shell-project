@@ -9,15 +9,15 @@
 void executor(Command cmd){
     pid_t pid = fork();
 
-    if (pid == 0){
+    if (pid == 0){ // Child path
         execvp(cmd.name, cmd.args);
         perror(cmd.name);
         exit(EXIT_FAILURE);
     }
-    else if (pid == -1){
+    else if (pid == -1){ // Fork error path
         perror("fork");
     }
-    else{
+    else{ // Parent path
         waitpid(pid, NULL, 0);
     }
 }
