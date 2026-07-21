@@ -27,11 +27,7 @@ int tokenizer(char **tokens, char *input){
 }
 
 // Function to parse tokens
-Command parse(char **tokens, int *in, int *out){
-    // Set flags to 0
-    *in = 0;
-    *out = 0;
-    
+Command parse(char **tokens){
     Command cmd = {0};  // Command struct with fields initialized to zero/NULL
     
     // Checking if tokens array is empty first
@@ -42,14 +38,19 @@ Command parse(char **tokens, int *in, int *out){
     // Copying the tokens into args
     int i = 0;
     while (tokens[i] != NULL){
-        if (strcmp(tokens[i], ">") != 0){
+        if ((strcmp(tokens[i], ">") != 0) && (strcmp(tokens[i], "<") != 0)){
             cmd.args[i] = tokens[i];
             ++i;
         }
-        else if (strcmp(tokens[i], ">") == 0){
-            *out = 1;
+        else if (strcmp(tokens[i], ">") == 0){  // Output redirection path
             ++i;
             cmd.output_file = tokens[i];
+            --i;
+            break;
+        }
+        else if (strcmp(tokens[i], "<") == 0){  // Input redirection path
+            ++i;
+            cmd.input_file = tokens[i];
             --i;
             break;
         }

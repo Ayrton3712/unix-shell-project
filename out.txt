@@ -1,9 +1,0 @@
-total 413
-drwxrwx--- 1 root vboxsf      0 Jul 21 14:43 build
-drwxrwx--- 1 root vboxsf      0 Apr  8 15:56 include
--rwxrwx--- 1 root vboxsf    422 Apr  8 16:00 Makefile
--rwxrwx--- 1 root vboxsf      0 Jul 21  2026 out.txt
--rwxrwx--- 1 root vboxsf   1518 May  2 14:18 README.md
-drwxrwx--- 1 root vboxsf      0 Apr  8 15:56 src
--rwxrwx--- 1 root vboxsf 403236 Jun 26 17:12 Unix Shell in C.pod
--rwxrwx--- 1 root vboxsf   8246 May  1 15:18 Unix_Shell_WBS.xlsx

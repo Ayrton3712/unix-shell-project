@@ -13,9 +13,15 @@ void executor(Command cmd){
     if (pid == 0){ // Child path
         // Output redirection
         if (cmd.output_file != NULL){
-            int file_fd = open(cmd.output_file, O_WRONLY | O_CREAT | O_TRUNC);  // Open the file and store its fd
-            dup2(file_fd, STDOUT_FILENO);   // Redirect fd 1 to file_fd
-            close(file_fd); // Close file_fd
+            int file_fd = open(cmd.output_file, O_WRONLY | O_CREAT | O_TRUNC);  // Open output file and store its fd
+            dup2(file_fd, STDOUT_FILENO);   // Rewire stdout to file_fd
+            close(file_fd); // Drop file_fd
+        }
+        // Input redirection
+        if (cmd.input_file != NULL){
+            int file_fd = open(cmd.input_file, O_RDONLY);   // Open input file and store its fd
+            dup2(file_fd, STDIN_FILENO);    // Rewire stdin to file_fd
+            close(file_fd); // Drop file_fd
         }
 
         execvp(cmd.name, cmd.args);
