@@ -425,4 +425,4 @@ FodyWeavers.xsd
 *.txt
 
 # Documentation screenshots
-*./docs
+/docs
