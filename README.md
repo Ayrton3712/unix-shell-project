@@ -25,3 +25,7 @@ Basic built-in commands implemented directly in the shell before calling the exe
 
 <img width="550" height="195" alt="image" src="https://github.com/user-attachments/assets/489bcaca-6433-47b2-b468-75908015ae84" />
 
+## Output and input redirection:
+Implemented output and input redirection via `>` and `<`, respectively. For output redirection, stdout is rewired to the file passed so that the commands writes into that file. For input redirection, stdin is rewired to the file passed so that the commands reads from the file directly. Usage example:
+
+<img width="510" height="258" alt="output-input-redirection" src="https://github.com/user-attachments/assets/8b99ebe6-f41b-4ee0-8a72-e9dc568cb95e" />
