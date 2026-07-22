@@ -15,6 +15,12 @@ void executor(Command cmd){
         if (cmd.output_file != NULL){
             int file_fd = open(cmd.output_file, O_WRONLY | O_CREAT | O_TRUNC, 0644);  // Open output file and store its fd
             
+            // Open failure path
+            if (file_fd == -1){
+                perror(cmd.output_file);
+                exit(EXIT_FAILURE);
+            }
+
             dup2(file_fd, STDOUT_FILENO);   // Rewire stdout to file_fd
             close(file_fd); // Drop file_fd
         }
@@ -22,6 +28,12 @@ void executor(Command cmd){
         if (cmd.input_file != NULL){
             int file_fd = open(cmd.input_file, O_RDONLY);   // Open input file and store its fd
             
+            // Open failure path
+            if (file_fd == -1){
+                perror(cmd.output_file);
+                exit(EXIT_FAILURE);
+            }
+
             dup2(file_fd, STDIN_FILENO);    // Rewire stdin to file_fd
             close(file_fd); // Drop file_fd
         }
