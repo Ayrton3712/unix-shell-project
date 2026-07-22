@@ -21,8 +21,17 @@ void executor(Command cmd){
                 exit(EXIT_FAILURE);
             }
 
-            dup2(file_fd, STDOUT_FILENO);   // Rewire stdout to file_fd
-            close(file_fd); // Drop file_fd
+            // Rewire stdout to file_fd while handling dup2 failure
+            if(dup2(file_fd, STDOUT_FILENO) == -1){
+                perror();
+                exit(EXIT_FAILURE);
+            }
+
+            // Drop file_fd while handling close failure
+            if(close(file_fd) == -1){
+                perror();
+                exit(EXIT_FAILURE);
+            }
         }
         // Input redirection
         if (cmd.input_file != NULL){
@@ -34,8 +43,17 @@ void executor(Command cmd){
                 exit(EXIT_FAILURE);
             }
 
-            dup2(file_fd, STDIN_FILENO);    // Rewire stdin to file_fd
-            close(file_fd); // Drop file_fd
+            // Rewire stdin to file_fd while handling dup2 failure
+            if(dup2(file_fd, STDIN_FILENO) == -1){
+                perror();
+                exit(EXIT_FAILURE);
+            }
+
+            // Drop file_fd while handling close failure
+            if(close(file_fd) == -1){
+                perror();
+                exit(EXIT_FAILURE);
+            }
         }
 
         execvp(cmd.name, cmd.args);
