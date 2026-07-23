@@ -67,3 +67,25 @@ void executor(Command cmd){
         waitpid(pid, NULL, 0);
     }
 }
+
+void setup_redirect(const char* filename, int flags, int target_fd){
+    int file_fd = open(filename, flags);
+
+    // Open failure path
+    if (file_fd == -1){
+        perror(filename);
+        exit(EXIT_FAILURE);
+    }
+
+    // Rewire stdin to file_fd while handling dup2 failure
+    if(dup2(file_fd, target_fd) == -1){
+        perror("dup2");
+        exit(EXIT_FAILURE);
+    }
+
+    // Drop file_fd while handling close failure
+    if(close(file_fd) == -1){
+        perror("close");
+        exit(EXIT_FAILURE);
+    }
+}
