@@ -23,13 +23,13 @@ void executor(Command cmd){
 
             // Rewire stdout to file_fd while handling dup2 failure
             if(dup2(file_fd, STDOUT_FILENO) == -1){
-                perror();
+                perror("dup2");
                 exit(EXIT_FAILURE);
             }
 
             // Drop file_fd while handling close failure
             if(close(file_fd) == -1){
-                perror();
+                perror("close");
                 exit(EXIT_FAILURE);
             }
         }
@@ -39,19 +39,19 @@ void executor(Command cmd){
             
             // Open failure path
             if (file_fd == -1){
-                perror(cmd.output_file);
+                perror(cmd.input_file);
                 exit(EXIT_FAILURE);
             }
 
             // Rewire stdin to file_fd while handling dup2 failure
             if(dup2(file_fd, STDIN_FILENO) == -1){
-                perror();
+                perror("dup2");
                 exit(EXIT_FAILURE);
             }
 
             // Drop file_fd while handling close failure
             if(close(file_fd) == -1){
-                perror();
+                perror("close");
                 exit(EXIT_FAILURE);
             }
         }
