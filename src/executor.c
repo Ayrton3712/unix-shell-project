@@ -13,47 +13,11 @@ void executor(Command cmd){
     if (pid == 0){ // Child path
         // Output redirection
         if (cmd.output_file != NULL){
-            int file_fd = open(cmd.output_file, O_WRONLY | O_CREAT | O_TRUNC, 0644);  // Open output file and store its fd
-            
-            // Open failure path
-            if (file_fd == -1){
-                perror(cmd.output_file);
-                exit(EXIT_FAILURE);
-            }
-
-            // Rewire stdout to file_fd while handling dup2 failure
-            if(dup2(file_fd, STDOUT_FILENO) == -1){
-                perror("dup2");
-                exit(EXIT_FAILURE);
-            }
-
-            // Drop file_fd while handling close failure
-            if(close(file_fd) == -1){
-                perror("close");
-                exit(EXIT_FAILURE);
-            }
+            setup_redirect(cmd.output_file, O_CREAT | O_WRONLY | O_TRUNC, STDOUT_FILENO);
         }
         // Input redirection
         if (cmd.input_file != NULL){
-            int file_fd = open(cmd.input_file, O_RDONLY);   // Open input file and store its fd
-            
-            // Open failure path
-            if (file_fd == -1){
-                perror(cmd.input_file);
-                exit(EXIT_FAILURE);
-            }
-
-            // Rewire stdin to file_fd while handling dup2 failure
-            if(dup2(file_fd, STDIN_FILENO) == -1){
-                perror("dup2");
-                exit(EXIT_FAILURE);
-            }
-
-            // Drop file_fd while handling close failure
-            if(close(file_fd) == -1){
-                perror("close");
-                exit(EXIT_FAILURE);
-            }
+            setup_redirect(cmd.input_file, O_RDONLY, STDIN_FILENO);
         }
 
         execvp(cmd.name, cmd.args);
