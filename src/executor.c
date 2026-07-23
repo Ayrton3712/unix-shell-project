@@ -33,7 +33,7 @@ void executor(Command cmd){
 }
 
 void setup_redirect(const char* filename, int flags, int target_fd){
-    int file_fd = open(filename, flags);
+    int file_fd = open(filename, flags, 0644);
 
     // Open failure path
     if (file_fd == -1){
